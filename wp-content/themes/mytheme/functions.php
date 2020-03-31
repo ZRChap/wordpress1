@@ -85,3 +85,32 @@ function my_sidebars() {
 }
 
 add_action('widgets_init', 'my_sidebars');
+
+function my_first_post_type() {
+    $args = [
+        'hierarchical' => true,
+        'labels' => ['name' => 'Cars', 'singular_name' => 'Car'],
+        'public' => true,
+        'has_archive' => true,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        //'rewrite' => ['slug' => 'my-cars']
+        'menu_icon' => 'dashicons-images-alt2'
+    ];
+    register_post_type('cars', $args);
+
+};
+
+add_action('init', 'my_first_post_type');
+
+
+function my_first_taxonomy() {
+    $args = [
+        'labels' => ['name' => 'Brands', 'singular_name' => 'Brand'],
+        'public' => true,
+        'hierarchical' => false,
+    ];
+
+    register_taxonomy('brands', ['cars'], $args);
+}
+
+add_action('init', 'my_first_taxonomy');

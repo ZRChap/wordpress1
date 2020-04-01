@@ -86,13 +86,15 @@ function my_sidebars() {
 
 add_action('widgets_init', 'my_sidebars');
 
+
+// Add custom post type
 function my_first_post_type() {
     $args = [
         'hierarchical' => true,
         'labels' => ['name' => 'Cars', 'singular_name' => 'Car'],
         'public' => true,
         'has_archive' => true,
-        'supports' => ['title', 'editor', 'thumbnail'],
+        'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
         //'rewrite' => ['slug' => 'my-cars']
         'menu_icon' => 'dashicons-images-alt2'
     ];
